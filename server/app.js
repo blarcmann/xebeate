@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express')
 const app = express()
 require('./config/db');
-const { loginCheck } = require('./middleware/auth');
+const { authCheck } = require('./middlewares/auth');
 
 
 
@@ -17,14 +17,13 @@ app.use(express.urlencoded({ extended: false }));
 
 
 // routes
-app.use('/', authRoute)
-app.use('/', loginCheck, postRoute)
-app.use('/', loginCheck, userRoute)
-
-
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World!');
 })
+
+app.use('/auth', authRoute)
+app.use('/post', postRoute)
+app.use('/user', authCheck, userRoute)
 
 app.listen(process.env.PORT, () => {
   console.log(`up on ${process.env.PORT}`)
