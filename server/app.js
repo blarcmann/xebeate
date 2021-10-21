@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/auth', authRoute)
-app.use('/post', postRoute)
+app.use('/post', authCheck, postRoute)
 app.use('/user', authCheck, userRoute)
 
 app.listen(process.env.PORT, () => {

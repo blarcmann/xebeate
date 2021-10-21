@@ -5,8 +5,8 @@ const UserModel = require('../models/User');
 
 class Auth {
   async signup(req, res) {
-    let { firstname, lastname, email, password, creator = false } = req.body;
-    if (!firstname || !lastname || !email || !password) {
+    let { firstname, lastname, username, email, password, creator = false } = req.body;
+    if (!firstname || !lastname || !email || !password || !username) {
       return res.status(400).json({
         error: "All fields are compulsory",
       })
@@ -23,6 +23,7 @@ class Auth {
         const newUser = new UserModel({
           firstname,
           lastname,
+          username,
           email,
           password,
           creator,
