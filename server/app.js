@@ -1,22 +1,19 @@
 require('dotenv').config();
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 require('./config/db');
 const { authCheck } = require('./middlewares/auth');
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
 const userRoute = require('./routes/user');
 
-
-app.use(express.static('public'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }));
-
-
-// routes
+// test
 app.get('/', (req, res) => {
   res.send('Hello World!');
 })
