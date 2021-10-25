@@ -92,10 +92,19 @@ class Post {
 
   // All post global
   allPost(req, res) {
-    let posts = PostModel.find({}).populate("postedBy", "_id name profile_pic").populate("comments.postedBy", "_id name").sort({ _id: -1 })
+    let posts = PostModel.find({})
+      .populate("by", "_id username")
+      .populate("comments.by", "_id username")
+      .sort({ _id: -1 })
     posts.exec((err, posts) => {
-      if (err) { console.log(err) };
+      if (error) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error occured. Cannot retrieve posts now',
+        });
+      }
       res.json({
+        success: true,
         posts
       })
     })
@@ -103,11 +112,14 @@ class Post {
   }
 
   //  Post by following
-  async allPostByFollowing(req, res) {
-    let loggedInUserId = req.params.id
+  async circlePosts(req, res) {
     try {
-      let logData = await UserModel.findOne({ _id: loggedInUserId }).select("followers following")
-      let posts = PostModel.find({ postedBy: { $in: logData.following } }).populate("postedBy", "_id name profile_pic").populate("comments.postedBy", "_id name profile_pic").sort({ _id: -1 })
+      let users = await UserModel.findOne({ _id: req.params.id })
+        .select("followers following")
+      let posts = PostModel.find({ by: { $in: users.following } })
+        .populate("by", "_id username")
+        .populate("comments.by", "_id name profile_pic")
+        .sort({ _id: -1 })
       posts.exec((err, posts) => {
         if (err) { console.log(err) };
         res.json({

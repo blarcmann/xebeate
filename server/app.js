@@ -18,9 +18,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 })
 
-app.use('/auth', authRoute)
-app.use('/post', authCheck, postRoute)
-app.use('/user', authCheck, userRoute)
+app.use('/auth', authRoute);
+app.use('/posts', postRoute);
+app.use('/post', authCheck, postRoute);
+app.use('/user', authCheck, userRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`up on ${process.env.PORT}`)

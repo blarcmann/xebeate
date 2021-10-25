@@ -4,8 +4,8 @@ const postController = require('../controllers/post');
 
 router.post('/create-post', postController.createNewPost);
 router.post('/add-image', postController.addImageToPost);
-router.get('/all-post/', postController.allPost);
-router.get('/all-post-following/:id', postController.allPostByFollowing);
+router.get('/all', postController.allPost);
+router.get('/circle/:id', postController.circlePosts);
 router.get('/all-post/:id', postController.allPostByUser);
 router.post('/like', postController.like);
 router.post('/unlike', postController.unlike);

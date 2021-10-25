@@ -42,11 +42,11 @@ class User {
   }
 
 
-// 61717bfb054103a601af66f4
-  
+  // 61717bfb054103a601af66f4
+
   async follow(req, res) {
     let { followingId, userId } = req.body;
-    console.log('dot body',req.body);
+    console.log('dot body', req.body);
     if (!followingId || !userId) {
       return res.status(400).json({
         success: false,
@@ -136,7 +136,7 @@ class User {
         result: searchUser
       });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       res.json({
         success: false,
         message: "Not found :|"
