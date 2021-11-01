@@ -6,10 +6,13 @@ router.post('/create-post', postController.createNewPost);
 router.post('/add-image', postController.addImageToPost);
 router.get('/all', postController.allPost);
 router.get('/circle/:id', postController.circlePosts);
-router.get('/all-post/:id', postController.allPostByUser);
+router.get('/all/:id', postController.allPostByUser);
 router.post('/like', postController.like);
 router.post('/unlike', postController.unlike);
 router.post('/comment', postController.comment);
-router.post('/delete', postController.deletePost);
+router.delete('/delete', postController.deletePost);
+
+
+
 
 module.exports = router;

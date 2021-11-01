@@ -46,7 +46,6 @@ class User {
 
   async follow(req, res) {
     let { followingId, userId } = req.body;
-    console.log('dot body', req.body);
     if (!followingId || !userId) {
       return res.status(400).json({
         success: false,

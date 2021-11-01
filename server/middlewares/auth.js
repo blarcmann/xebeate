@@ -5,10 +5,11 @@ exports.authCheck = (req, res, next) => {
     let token = req.headers.authorization;
     token = token.replace("Bearer ", "")
     decode = jwt.verify(token, process.env.JWT_SECRET)
+    req.userDetails = decode
     next();
   } catch (err) {
     res.json({
-      error: "You must be logged in"
+      error: "Authentication failed"
     })
   }
 }

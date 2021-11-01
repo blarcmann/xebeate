@@ -2,7 +2,6 @@ const Formidable = require('formidable');
 const cloudinary = require("cloudinary");
 const PostModel = require('../models/Post');
 const UserModel = require('../models/User');
-const fs = require('fs');
 
 
 // configure cloudinary
@@ -21,14 +20,14 @@ class Post {
           success: false
         })
       }
-      const { title, description } = fields;
-      if (!title || !description || !files.images) {
+      const { title, description, by } = fields;
+      if (!title || !description || !files.images || !by) {
         return res.status(400).json({
           success: false,
           message: "All fields are compulsory.",
         });
       }
-      cloudinary.uploader.upload(files.images[0].path, (result, error) => {
+      cloudinary.uploader.upload(files.images.path, (result, error) => {
         if (error) {
           return res.status(500).json({
             success: false,
@@ -38,6 +37,7 @@ class Post {
           title,
           description,
           images: [],
+          by: by,
           avi: result.secure_url,
         });
         newPost.save((error, response) => {
@@ -96,7 +96,7 @@ class Post {
       .populate("by", "_id username")
       .populate("comments.by", "_id username")
       .sort({ _id: -1 })
-    posts.exec((err, posts) => {
+    posts.exec((error, posts) => {
       if (error) {
         return res.status(500).json({
           success: false,
@@ -111,56 +111,88 @@ class Post {
 
   }
 
-  //  Post by following
   async circlePosts(req, res) {
     try {
       let users = await UserModel.findOne({ _id: req.params.id })
         .select("followers following")
-      let posts = PostModel.find({ by: { $in: users.following } })
+      const posts = PostModel.find({ by: { $in: users.following } })
         .populate("by", "_id username")
         .populate("comments.by", "_id name profile_pic")
         .sort({ _id: -1 })
-      posts.exec((err, posts) => {
-        if (err) { console.log(err) };
-        res.json({
+      posts.exec((error, posts) => {
+        console.log('postsssss', posts);
+        if (error) {
+          return res.status(500).json({
+            success: false,
+            message: 'Error occured. Cannot retrieve posts now',
+          });
+        }
+        return res.json({
+          success: true,
           posts
         })
       })
-    } catch (err) {
-      console.log(err)
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        success: false,
+        message: 'Error occured. Cannot retrieve posts now',
+      });
     }
 
   }
 
-  // Paticuler post a user
   allPostByUser(req, res) {
-    const userId = req.params.id
-    let posts = PostModel.find({ postedBy: userId }).populate("postedBy", "_id name profile_pic").sort({ _id: -1 });
-    posts.exec((err, posts) => {
-      if (err) { console.log(err) };
-      return res.json({ posts })
+    let posts = PostModel.find({ postedBy: req.params.id })
+      .populate("by", "_id username")
+      .sort({ _id: -1 });
+    posts.exec((error, posts) => {
+      if (error) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error occured. Cannot retrieve posts now',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        posts,
+      })
     })
   }
 
   like(req, res) {
     PostModel.findByIdAndUpdate(req.body.postId, {
-      $push: { likes: req.userDetails._id }
+      $push: { likes: req.body.userId }
     }, {
       new: true
-    }).exec((err, result) => {
-      if (err) { console.log(err) }
-      return res.json(result)
+    }).exec((error, result) => {
+      if (error) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error occured. Operation not successful',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+      })
     })
   }
 
   unlike(req, res) {
     PostModel.findByIdAndUpdate(req.body.postId, {
-      $pull: { likes: req.userDetails._id }
+      $pull: { likes: req.body.userId }
     }, {
       new: true
-    }).exec((err, result) => {
-      if (err) { console.log(err) }
-      return res.json(result)
+    }).exec((error, result) => {
+      if (error) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error occured. Operation not successful',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+      })
     })
   }
 
@@ -168,25 +200,36 @@ class Post {
     PostModel.findByIdAndUpdate(req.body.postId, {
       $push: {
         comments: {
-          text: req.body.text,
-          postedBy: req.userDetails._id
+          by: req.body.userId,
+          body: req.body.body,
         }
       }
-    }).populate("comments.postedBy", "_id name").exec((err, result) => {
-      if (err) { console.log(err) }
-      res.json({ result })
+    }).populate("comments.by", "_id username").exec((error, result) => {
+      if (error) {
+        return res.status(500).json({
+          success: false,
+          message: 'Error occured. Operation not successful',
+        });
+      }
+      res.status(200).json({
+        success: true
+      })
     })
   }
 
   deletePost(req, res) {
-    const filePath = `../server/public/uploads/${req.body.filename}`;
     let del = PostModel.findByIdAndDelete(req.body.postId)
-    if (req.body.loggedInUser === req.userDetails._id) {
-      del.exec((err, result) => {
-        if (err) { console.log(err) }
-        fs.unlink(filePath, (err) => {
-          if (err) { console.log(err) }
-          return res.json({ result: "Post delete successfully" })
+    if (req.body.userId === req.userDetails._id) {
+      del.exec((error, result) => {
+        if (error) {
+          return res.status(500).json({
+            success: false,
+            message: 'Error occured. Operation not successful',
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          message: "Post deleted successfully"
         })
       })
     }
