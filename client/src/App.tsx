@@ -1,8 +1,30 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import { useGlobalContext } from './context';
 
 function App() {
+  const { state, dispatch } = useGlobalContext();
+
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValue(e.target.value);
+  // };
+
+  // const toggleMode = () => {
+  //   dispatch({
+  //     type: "TOGGLE_MODE",
+  //   });
+  // };
+
+  // const addItem = () => {
+  //   if (value.length > 0) {
+  //     dispatch({
+  //       type: "ADD_TODO",
+  //       payload: value,
+  //     });
+  //     setValue("");
+  //   }
+  // };
+
   return (
     <div className="App">
       <header className="App-header">
