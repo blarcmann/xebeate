@@ -15,43 +15,56 @@ export default function Post() {
           </a>
           <span className="block capitalize font-semibold dark:text-gray-100">Nina Cinderella</span>
         </div>
-          <div className="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700" uk-drop="mode: hover;pos: top-right">
-            <ul className="space-y-1">
-              <li>
-                <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                  <i className="uil-share-alt mr-1"></i> Share
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                  <i className="uil-edit-alt mr-1"></i>  Edit Post
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                  <i className="uil-comment-slash mr-1"></i>   Disable comments
-                </a>
-              </li>
-              <li>
-                <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
-                  <i className="uil-favorite mr-1"></i>  Add favorites
-                </a>
-              </li>
-              <li>
-                <hr className="-mx-2 my-2 dark:border-gray-800" />
-              </li>
-              <li>
-                <a href="#" className="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
-                  <i className="uil-trash-alt mr-1"></i>  Delete
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700" uk-drop="mode: hover;pos: top-right">
+          <ul className="space-y-1">
+            <li>
+              <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                <i className="uil-share-alt mr-1"></i> Share
+              </a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                <i className="uil-edit-alt mr-1"></i>  Edit Post
+              </a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                <i className="uil-comment-slash mr-1"></i>   Disable comments
+              </a>
+            </li>
+            <li>
+              <a href="#" className="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-800">
+                <i className="uil-favorite mr-1"></i>  Add favorites
+              </a>
+            </li>
+            <li>
+              <hr className="-mx-2 my-2 dark:border-gray-800" />
+            </li>
+            <li>
+              <a href="#" className="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                <i className="uil-trash-alt mr-1"></i>  Delete
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div>
-        <a href="assets/images/post/img4.jpg">
+        <div className="grid grid-cols-2 gap-2 p-2">
+
+          <a href="assets/images/post/img4.jpg">
+            <img src={require('../../assets/images/anton-krasko-01.jpeg').default} alt="anton-krasko-01" />
+          </a>
+          <a href="assets/images/post/img11.jpg" className="relative">
+            <img src={require('../../assets/images/anton-krasko-01.jpeg').default} alt="" className="rounded-md w-full h-full" />
+            <div
+              className="absolute bg-gray-900 bg-opacity-30 flex justify-center items-center text-white rounded-md inset-0 text-2xl">
+              + 15 more </div>
+          </a>
+
+        </div>
+        {/* <a href="assets/images/post/img4.jpg">
           <img src={require('../assets/images/anton-krasko-01.jpeg').default} alt="anton-krasko-01" />
-        </a>
+        </a> */}
       </div>
 
       <div className="py-3 px-4 space-y-3">
