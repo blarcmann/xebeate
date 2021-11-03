@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Routes from './routes';
 import { GlobalContextProvider } from './context';
 import reportWebVitals from './reportWebVitals';
+import './styles/tailwind.css'
+import './styles/uikit.css'
+import './styles/style.css'
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalContextProvider>
-      <App />
+      <Routes />
     </GlobalContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
