@@ -94,7 +94,7 @@
 
 /* sidebar link active */
 .dark .sidebar .sidebar_inner ul li.active a {
-  color: #be185d !important;
+  color: #503E9D !important;
 }
 
 /* change default logo */
@@ -117,7 +117,7 @@ button {
 }
 
 span.button, button.button {
-  background-color: #be185d;
+  background-color: #503E9D;
   top: 0;
   color: #fff;
   position: relative;
@@ -138,7 +138,7 @@ span.button, button.button {
 }
 
 input[type="button"], input[type="submit"] {
-  background-color: #be185d;
+  background-color: #503E9D;
   top: 0;
   padding: 10px 20px;
   line-height: 24px;
@@ -158,7 +158,7 @@ input[type="button"], input[type="submit"] {
 }
 
 a.button {
-  background-color: #be185d;
+  background-color: #503E9D;
   top: 0;
   padding: 8px 18px;
   line-height: 22px;
@@ -849,7 +849,7 @@ button {
 }
 
 a {
-  color: #be185d;
+  color: #503E9D;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none !important;
@@ -942,7 +942,7 @@ img {
 
 .keyword {
   background-color: rgba(190, 24, 93, 0.07);
-  color: #be185d;
+  color: #503E9D;
   display: inline-block;
   float: left;
   padding: 0;
@@ -1032,18 +1032,6 @@ img {
   padding-right: 12px;
 }
 
-.keyword .keyword-remove:before {
-  display: inline-block;
-  cursor: pointer;
-  font-family: "Feather-Icons";
-  content: "\ea02";
-  line-height: 20px;
-  position: relative;
-  top: 2px;
-  margin-right: 4px;
-  margin-left: 10px;
-  font-size: 15px;
-}
 
 .keyword-input-container {
   position: relative;
@@ -1057,7 +1045,7 @@ img {
   width: 36px;
   padding: 0;
   color: #fff;
-  background-color: #be185d;
+  background-color: #503E9D;
   border-radius: 4px;
   margin: 6px;
   font-size: 19px;
@@ -1139,8 +1127,8 @@ input.keyword-input {
 }
 
 .checkbox input:checked + label span.checkbox-icon {
-  border-color: #be185d;
-  background-color: #be185d;
+  border-color: #503E9D;
+  background-color: #503E9D;
 }
 
 .checkbox input:checked + label span.checkbox-icon:after {
@@ -1195,7 +1183,7 @@ input.keyword-input {
 }
 
 .radio input[type="radio"] + label .radio-label:after {
-  background-color: #be185d;
+  background-color: #503E9D;
   content: "";
   top: 3px;
   left: 0;
@@ -1219,8 +1207,8 @@ input.keyword-input {
 }
 
 .radio input[type="radio"]:checked + label .radio-label {
-  background-color: #be185d;
-  border-color: #be185d;
+  background-color: #503E9D;
+  border-color: #503E9D;
   -webkit-box-shadow: inset 0 0 0 3px #fff;
           box-shadow: inset 0 0 0 3px #fff;
 }
@@ -1412,7 +1400,7 @@ label.switch {
 }
 
 input:checked + .switch-button {
-  background-color: #be185d;
+  background-color: #503E9D;
 }
 
 input:checked + .switch-button:before {
@@ -1437,8 +1425,8 @@ body {
   color: #666;
   font-size: 15px;
   line-height: 27px;
-  background-color: #f0f2f5;
-  font-family: "Inter", sans-serif;
+  background-color: #FFF;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
@@ -1454,29 +1442,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Inter", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
 input[type="text"], input[type="password"], input[type="email"] {
-  font-family: "Inter", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
 textarea,
 select {
-  font-family: "Inter", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
 input[type="button"], input[type="submit"] {
-  font-family: "Inter", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
 button,
 body .pac-container {
-  font-family: "Inter", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-transform: none;
 }
 
@@ -2065,7 +2053,7 @@ header .header_inner .right-side .header-avatar {
 }
 
 .header_dropdown.profile_dropdown ul a:hover {
-  color: #be185d;
+  color: #503E9D;
   background-color: transparent;
 }
 
@@ -2241,7 +2229,7 @@ header .uk-dropdown {
   padding: 0 20px;
   margin-bottom: 5px;
   display: block;
-  color: #be185d;
+  color: #503E9D;
   font-weight: 600;
   font-size: 14px;
 }
@@ -2263,27 +2251,18 @@ header .uk-dropdown {
   transition: 0.3s;
   cursor: pointer;
   position: relative;
-  font-weight: 500;
-  margin-bottom: 5px;
+  font-weight: 400;
+  margin-bottom: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-.sidebar .sidebar_inner ul li a i {
-  padding-right: 18px;
-  color: #707070;
-  font-size: 21px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  position: relative;
-  top: 2px;
 }
 
 .sidebar .sidebar_inner ul li a svg {
   width: 23px;
   height: 23px;
   margin-right: 15px;
+  color: #878787;
 }
 
 .sidebar .sidebar_inner ul li ul li:hover a {
@@ -2293,13 +2272,13 @@ header .uk-dropdown {
 .sidebar .sidebar_inner ul li.active-submenu a i,
 .sidebar .sidebar_inner ul li.active a i,
 .sidebar .sidebar_inner ul li:hover a i {
-  color: #be185d;
+  color: #503E9D;
 }
 
 .sidebar .sidebar_inner ul li.active-submenu a,
 .sidebar .sidebar_inner ul li:hover a,
 .sidebar .sidebar_inner ul li.active a {
-  color: #be185d;
+  color: #503E9D;
 }
 
 .sidebar .sidebar_inner ul li span.nav-tag {
@@ -2311,7 +2290,7 @@ header .uk-dropdown {
   text-align: center;
   color: #fff;
   font-size: 11px;
-  background-color: #be185d;
+  background-color: #503E9D;
   border-radius: 50%;
   position: relative;
   margin: 0 0 0 4px;
@@ -2356,25 +2335,6 @@ header .uk-dropdown {
   background-color: transparent;
 }
 
-.sidebar .sidebar_inner ul li a:after {
-  font-family: "Feather-Icons";
-  content: '\e92e';
-  opacity: 1;
-  font-size: 19px;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  opacity: 1;
-  line-height: 17px;
-  width: 17px;
-  height: 17px;
-  color: #a8a8a8;
-  display: inline-block;
-  border-radius: 3px;
-  text-indent: 0;
-  position: absolute;
-  right: 15px;
-  top: 17px;
-}
 
 .sidebar .sidebar_inner ul li.active-submenu a:after {
   -webkit-transform: rotate(180deg);
@@ -2610,18 +2570,6 @@ header .uk-dropdown {
   position: relative;
 }
 
-.btn-mobile::before {
-  font-family: "Feather-Icons";
-  font-size: 22px;
-  content: '\ea02';
-  line-height: 30px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  position: absolute;
-}
-
 /* tragger */
 .btn-night-mode {
   border-radius: 5px;
@@ -2631,18 +2579,6 @@ header .uk-dropdown {
   background-color: #f0f2f5;
   border-radius: 100%;
   margin-left: auto;
-}
-
-.btn-night-mode::before {
-  font-family: "unicons";
-  font-size: 22px;
-  content: '\ea99';
-  line-height: 30px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  position: absolute;
 }
 
 /* tragger */

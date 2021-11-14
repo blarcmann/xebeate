@@ -1,4 +1,3 @@
-import React from 'react'
 import Container from '../components/containers/Container';
 import RightSidebar from '../components/RightSidebar';
 import Post from '../components/cards/Post';

@@ -7,7 +7,7 @@ interface ContainerProps {
   title: string;
 }
 
-function Container(props: any) { // should change the type :|
+function Container (props: any) { // should change the type :|
   const { children, title }: ContainerProps = props;
   return (
     <div id="wrapper">
