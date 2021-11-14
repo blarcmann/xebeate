@@ -2198,6 +2198,7 @@ header .uk-dropdown {
 }
 
 .sidebar .sidebar_header img {
+  width: 40px;
   max-width: 110px;
 }
 
@@ -2244,15 +2245,16 @@ header .uk-dropdown {
 }
 
 .sidebar .sidebar_inner ul li a {
-  color: #707070;
+  color: #999;
   display: block;
   padding: 8px 15px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
   position: relative;
-  font-weight: 400;
-  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
